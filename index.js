@@ -1,7 +1,6 @@
 /*
  * TODO
  *
- *  ternary operator
  */
 
 const kestrel = (x) => (y) => x
