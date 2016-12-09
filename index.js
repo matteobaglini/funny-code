@@ -1,8 +1,3 @@
-/*
- * TODO
- *
- */
-
 const kestrel = (x) => (y) => x
 const identity = (x) => x
 const vireo = (x) => (y) => (z) => z(x)(y)
