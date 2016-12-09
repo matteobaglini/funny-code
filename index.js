@@ -10,12 +10,10 @@ const oneItemList = [ "foo" ]
 const manyItemsList = [ "foo", "bar", "baz" ]
 
 
-const length = (list) => {
-  let count = 0
-  for(item in list)
-    count++
-  return count
-}
+const length = (list) =>
+  list.toString() === ""
+    ? 0
+    : 1 + length(list.slice(1))
 
 
 
