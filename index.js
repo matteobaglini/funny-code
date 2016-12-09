@@ -22,7 +22,8 @@ const length = (list) => {
 
 
 // not interesting print utils
-(function () {
+printAll()
+function printAll() {
 
   function print(what, tx, x) {
     console.log(`=== ${what}`)
@@ -34,4 +35,4 @@ const length = (list) => {
   print("empty", length, emptyList)
   print("one", length, oneItemList)
   print("many", length, manyItemsList)
-})()
+}
