@@ -1,8 +1,9 @@
 /*
  * TODO
  *
- *  for loop
  *  array
+ *  toString
+ *  slice
  */
 
 const emptyList = []
