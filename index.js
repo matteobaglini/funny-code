@@ -12,10 +12,15 @@ const oneItemList = [ "foo" ]
 const manyItemsList = [ "foo", "bar", "baz" ]
 
 
-const length = ([first, ...rest], acc = 0) =>
-  first === undefined
-    ? acc
-    : length(rest, 1 + acc)
+const length = (list) => {
+
+  const inner = ([first, ...rest], acc) =>
+    first === undefined
+      ? acc
+      : inner(rest, 1 + acc)
+
+  return inner(list, 0)
+}
 
 
 
