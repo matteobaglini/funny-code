@@ -1,9 +1,8 @@
 /*
  * TODO
  *
- *  array
- *  ... (rest operator)
  *  ternary operator
+ *  object literal
  */
 
 const EMPTY = null
