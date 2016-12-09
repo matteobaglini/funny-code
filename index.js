@@ -4,7 +4,6 @@
  *  array
  *  ... (rest operator)
  *  ternary operator
- *  default parameter
  */
 
 const emptyList = []
