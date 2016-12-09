@@ -6,17 +6,22 @@
  *  ternary operator
  */
 
-const emptyList = []
-const oneItemList = [ "foo" ]
-const manyItemsList = [ "foo", "bar", "baz" ]
+const EMPTY = null
+const pair = (x, y) => { return {x, y} }
+const first = (pair) => pair.x
+const rest = (pair) => pair.y
+
+const emptyList = pair(EMPTY, EMPTY)
+const oneItemList = pair("foo", emptyList)
+const manyItemsList = pair("foo", pair("bar", pair("baz", emptyList)))
 
 
 const length = (list) => {
 
-  const inner = ([first, ...rest], acc) =>
-    first === undefined
+  const inner = (pair, acc) =>
+    first(pair) === EMPTY
       ? acc
-      : inner(rest, 1 + acc)
+      : inner(rest(pair), 1 + acc)
 
   return inner(list, 0)
 }
