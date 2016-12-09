@@ -11,10 +11,10 @@ const oneItemList = [ "foo" ]
 const manyItemsList = [ "foo", "bar", "baz" ]
 
 
-const length = (list) =>
-  list.toString() === ""
+const length = ([first, ...rest]) =>
+  first === undefined
     ? 0
-    : 1 + length(list.slice(1))
+    : 1 + length(rest)
 
 
 
