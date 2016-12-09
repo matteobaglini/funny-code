@@ -11,10 +11,10 @@ const oneItemList = [ "foo" ]
 const manyItemsList = [ "foo", "bar", "baz" ]
 
 
-const length = ([first, ...rest]) =>
+const length = ([first, ...rest], acc = 0) =>
   first === undefined
-    ? 0
-    : 1 + length(rest)
+    ? acc
+    : length(rest, 1 + acc)
 
 
 
