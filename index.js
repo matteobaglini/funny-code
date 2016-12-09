@@ -5,22 +5,26 @@
  *  object literal
  */
 
-const EMPTY = null
-const pair = (x, y) => { return {x, y} }
-const first = (pair) => pair.x
-const rest = (pair) => pair.y
+const kestrel = (x) => (y) => x
+const identity = (x) => x
+const vireo = (x) => (y) => (z) => z(x)(y)
 
-const emptyList = pair(EMPTY, EMPTY)
-const oneItemList = pair("foo", emptyList)
-const manyItemsList = pair("foo", pair("bar", pair("baz", emptyList)))
+const EMPTY = null
+const first = kestrel
+const rest = kestrel(identity)
+const pair = vireo
+
+const emptyList = pair(EMPTY)(EMPTY)
+const oneItemList = pair("foo")(emptyList)
+const manyItemsList = pair("foo")(pair("bar")(pair("baz")(emptyList)))
 
 
 const length = (list) => {
 
   const inner = (pair, acc) =>
-    first(pair) === EMPTY
+    pair(first) === EMPTY
       ? acc
-      : inner(rest(pair), 1 + acc)
+      : inner(pair(rest), 1 + acc)
 
   return inner(list, 0)
 }
