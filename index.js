@@ -13,17 +13,17 @@ const first = kestrel
 const rest = kestrel(identity)
 const pair = vireo
 
-const emptyList = pair(EMPTY)(EMPTY)
-const oneItemList = pair("foo")(emptyList)
-const manyItemsList = pair("foo")(pair("bar")(pair("baz")(emptyList)))
+const emptyList = (whenEmpty, unlessEmpty) => whenEmpty()
+const node = (x) => (y) => (whenEmpty, unlessEmpty) => unlessEmpty(pair(x)(y))
+
+const oneItemList = node("foo")(emptyList)
+const manyItemsList = node("foo")(node("bar")(node("baz")(emptyList)))
 
 
 const length = (list) => {
 
-  const inner = (pair, acc) =>
-    pair(first) === EMPTY
-      ? acc
-      : inner(pair(rest), 1 + acc)
+  const inner = (node, acc) =>
+    node(() => acc, (pair) => inner(pair(rest), 1 + acc))
 
   return inner(list, 0)
 }
