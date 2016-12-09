@@ -2,8 +2,8 @@
  * TODO
  *
  *  array
- *  toString
- *  slice
+ *  ... (rest operator)
+ *  ternary operator
  */
 
 const emptyList = []
